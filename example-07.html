@@ -7,9 +7,11 @@
 	<title>Document</title>
 </head>
 <body>
-
+	<label for="bill-amount">Bill Amount</label>
 	<input id="bill-amount" type="number">
+	<label for="tip-percent">Tip Percent</label>
 	<input id="tip-percent" type="number">
+	<h4>Tip Amount:</h4>
 	<div id="display"></div>
 	
 	<script>
@@ -23,11 +25,20 @@
 		// Write a function that takes two parameters: 
 		// billAmount and tipPercent
 		// It should calculate and return the tip amount. 
-		
+		function calculateTip(billAmount, tipPercent) {
+			const tipPercentage = tipPercent / 100;
+			return `$${(billAmount * tipPercentage).toFixed(2)}`;
+		}
 
 		// TODO: Define a new updateDisplay function. 
 		// This function will 
-
+		function updateDisplay(e) {
+			if (e.target.id === 'bill-amount') {
+				display.innerHTML = `Tip Amount: ${calculateTip(e.target.value, tipPercentInput.value)}`;
+			} else {
+				display.innerHTML = `Tip Amount: ${calculateTip(billAmountInput.value, e.target.value)}`;
+			}
+		}
 		
 
 		// This function will be called by an event listener that 
@@ -36,11 +47,11 @@
 		// TODO: Add an event listener to the billAmountInput. 
 		// The event should be 'input' and the handler function 
 		// should the updateDisplay function you just wrote. 
-
+		billAmountInput.addEventListener('input', updateDisplay)
 		// TODO: Add an event listener to the tipAmountInput. 
 		// The event should be 'input' and the handler function
 		// should the updateDisplay function. 
-
+		tipPercentInput.addEventListener('input', updateDisplay)
 		
 
 		// Test your work. Entering a value in the bill amount 

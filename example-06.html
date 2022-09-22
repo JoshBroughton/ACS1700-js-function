@@ -23,19 +23,25 @@
 		// It should take two parameters: 
 		// billAmount and tipPercent
 		// It should return the tipAmount. 
-
+		function calculateTip(billAmount, tipPercent) {
+			tipPercent = tipPercent / 100;
+			return `$${(billAmount * tipPercent).toFixed(2)}`;
+		}
 
 		// TODO: Check your work by calling the function
 		// and storing the return value in a variable. 
 		// Try using console.log() to check your work. 
-
+		sadTip = calculateTip(145.34, 5);
+		console.log(sadTip);
 
 		// TODO: Display the tip calculation in the #box 
 		// Call your fucntion, get the value returned, 
 		// and display a message in #box that reads
 		// something like: 
 		// "Bill: $10.00 Tip %: 15% Tip: $1.50"
-
+		const bill = 1000;
+		const tipPerc = 5;
+		box.innerHTML = `Bill: $${bill} Tip %: ${tipPerc}% Tip: ${calculateTip(bill, tipPerc)}`
 		
 	</script>
 </body>
